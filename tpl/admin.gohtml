@@ -1,0 +1,31 @@
+{{define "title" -}}Admin - Coya Design{{- end -}}
+{{define "content" -}}
+<div class="admin">
+    <form id="portfolio-form">
+        <input name="title" placeholder="Title" type="text"/>
+        <input name="image" placeholder="Image" type="file" multiple/>
+        <input name="send" type="submit" value="Upload"/>
+        <div class="warning" id="portfolio-error"></div>
+        <div class="success" id="portfolio-ok">Uploaded successfully</div>
+    </form>
+    <hr>
+    <div class="list">
+    {{range $key := .Items}}
+        <div class="item item-{{.ID}}" data-id="{{.ID}}">
+            <div>{{.Title}}</div>
+            {{range $i,$img := .Images}}
+                <img src="/file/{{.Name}}" height="50"/>
+            {{end}}
+            <label for="choose-{{.ID}}">
+                <input id="choose-{{.ID}}" type="checkbox" class="choose-portfolio" data-id="{{.ID}}" {{if .Chosen}}checked{{end}}/> Chosen
+            </label>
+            <button class="move-portfolio" data-id="{{.ID}}" data-move="up">Move up</button>
+            <button class="move-portfolio" data-id="{{.ID}}" data-move="down">Move down</button>
+            <button class="delete-portfolio" data-id="{{.ID}}" data-remove="item-{{.ID}}">Delete</button>
+            <hr>
+        </div>
+    {{end}}
+    </div>
+</div>
+{{- end -}}
+{{template "root" .}}

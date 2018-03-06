@@ -1,0 +1,17 @@
+{{define "title" -}}Portfolio - Coya Design{{- end -}}
+{{define "content" -}}
+<div class="portfolio">
+    {{range $index, $item := .Items}}
+    <a class="item" href="/portfolio/{{.ID}}">
+        <img width="1200" height="1200" src="/file/style-large/{{.Image}}"/>
+        <div class="description">
+            <div class="wrapper">
+            <h3>{{if .Title}}{{.Title}}{{else}}&nbsp;{{end}}</h3>
+            <p>click to view in full</p>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>
+{{- end -}}
+{{template "root" .}}

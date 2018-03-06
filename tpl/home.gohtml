@@ -1,0 +1,24 @@
+{{define "title" -}}Coya Design{{- end -}}
+{{define "content" -}}
+<div class="home header">
+    <div class="hero">
+        <h1>Coya Design</h1>
+        <p>Welcome to coya-design.com</p>
+        <a href="/portfolio">View full portfolio</a>
+    </div>
+</div>
+<div class="portfolio">
+{{range $index, $item := .Items}}
+    <a class="item" href="/portfolio/{{.ID}}">
+        <img src="/file/style-large/{{.Image}}" height="1200" width="1200"/>
+        <div class="description">
+            <div class="wrapper">
+                <h3>{{.Title}}</h3>
+                <p>click to view in full</p>
+            </div>
+        </div>
+    </a>
+{{end}}
+</div>
+{{- end -}}
+{{template "root" .}}

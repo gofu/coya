@@ -1,0 +1,60 @@
+{{define "root" -}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{block "title" .}}Coya Design{{end}}</title>
+    <style>{{asset "/static/base.css" true}}</style>
+    <link rel="stylesheet" href="{{asset "/static/style.css" false}}"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<div id="sidebar" class="sidebar">
+    <a href="/" class="logo"></a>
+    <a id="menu-toggle" class="hamburger hamburger--minus"><div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+    </div></a>
+    <ul class="menu">
+        <li><a {{if eq .Page "home"}}class="active"{{end}} href="/">Home</a></li>
+        <li><a {{if eq .Page "portfolio"}}class="active"{{end}} href="/portfolio">Portfolio</a></li>
+        <li><a {{if eq .Page "about"}}class="active"{{end}} href="/about">About</a></li>
+        <li><a {{if eq .Page "contact"}}class="active"{{end}} href="/contact">Contact</a></li>
+        {{if .Session.User}}
+        <li><a {{if eq .Page "admin"}}class="active"{{end}} href="/admin">Administration</a></li>
+        <li><a href="/logout?token={{csrf .Session "logout"}}">Log out</a></li>
+        {{end}}
+    </ul>
+    <div class="footer">
+        <p id="copyright">© {{copyright}} Coya Design.</p>
+        <p class="info">
+            Address placeholder, 12345
+            <br>
+            Tel: <a href="tel:+38765787446">+387 65 787 446</a>
+        </p>
+        <ul class="links">
+            <li><a href="https://www.facebook.com/dalibor.kojic1" title="Facebook" class="facebook" target="_blank" rel="nofollow"></a></li>
+            <li><a href="https://www.upwork.com/o/profiles/users/_~0130c32f7617a263e7/" title="Upwork" class="upwork" target="_blank" rel="nofollow"></a></li>
+            <li><a href="https://www.artstation.com/artist/coya" title="Artstation" class="artstation" target="_blank" rel="nofollow"></a></li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+{{- block "content" .}}Content{{end -}}
+</div>
+<div class="dialog hidden" id="login-dialog">
+    <div class="body">
+    <form id="login-form">
+        <a class="close"></a>
+        <h2>Administration</h2>
+        <input name="email" type="email" placeholder="E-mail"/>
+        <input name="password" type="password" placeholder="Password"/>
+        <input name="login" type="submit" value="Log in"/>
+        <div class="warning" id="login-error"></div>
+    </form>
+    </div>
+</div>
+<script src="{{asset "/static/script.js" false}}"></script>
+</body>
+</html>
+{{- end -}}

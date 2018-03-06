@@ -1,0 +1,34 @@
+{{define "title" -}}Contact Coya Design{{- end -}}
+{{define "content" -}}
+<div class="contact page-content">
+    <h1>Contact</h1>
+    <div class="contacts">
+        <a class="contact-link" href="skype:dalibor_md_13?call">
+            <div class="title">Skype</div>
+            <div class="id">dalibor_md_13</div>
+            <div class="link">Click to call</div>
+        </a>
+        <a class="contact-link" href="mailto:dalibor.kojic13@gmail.com">
+            <div class="title">Email</div>
+            <div class="id">dalibor.kojic13@gmail.com</div>
+            <div class="link">Click to send email</div>
+        </a>
+        <a class="contact-link" href="tel:+38765787446">
+            <div class="title">Phone</div>
+            <div class="id">+387 65 787 446</div>
+            <div class="link">Click to call</div>
+        </a>
+    </div>
+    <p class="text">I'm waiting to hear about your project. Let's talk.</p>
+    <form id="contact-form">
+        <input name="email" required id="contact-email" type="email" placeholder="Email"/>
+        <textarea rows="5" name="message" required id="contact-body" placeholder="Message"></textarea>
+        <input name="send" type="submit" value="Send Message"/>
+        <div class="warning" id="contact-error"></div>
+        <div id="contact-ok" class="success">
+            Thank you for your message.
+        </div>
+    </form>
+</div>
+{{- end -}}
+{{template "root" .}}

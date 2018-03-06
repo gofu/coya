@@ -1,0 +1,12 @@
+{{define "title" -}}Work {{.Title}} - Coya Design{{- end -}}
+{{define "content" -}}
+<div class="portfolio-view">
+    <h1>{{.Title}}</h1>
+    <div class="images">
+    {{range $key,$image := .Images}}
+         <img src="/file/{{.Name}}" width="100%"/>
+    {{end}}
+    </div>
+</div>
+{{- end -}}
+{{template "root" .}}
